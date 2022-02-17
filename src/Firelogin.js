@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {database} from './firebase'
 import GetData from './GetData'
+import Buy from './Buy'
 function Firelogin({n}) {
     const [username,setUsername]=useState('')
     const [no1,setNo1]=useState('')
@@ -68,7 +69,7 @@ function Firelogin({n}) {
       {/* <a href="/url">already have an account</a> */}
       {/* {data} */}
       {info}
-      </div>:<div><GetData/></div>}
+      </div>:<div><Buy/></div>}
       
   </div>;
 }

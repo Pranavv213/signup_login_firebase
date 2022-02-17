@@ -2,9 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import Fireauth from './Fireauth'
 import Firestorage from './Firestorage'
+import Buy from './Buy'
 import GetData from './GetData'
 import Firebase1 from './Firebase1'
 import Firelogin from './Firelogin'
+import Pay from './Pay'
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +19,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Firebase1}/>
-          <Route exact path="/getdata" component={GetData}/>
+          <Route exact path="/pay" component={Pay}/>
+          <Route exact path="/" component={Firebase1}/>
+          <Route exact path="/buy" component={Buy}/>
           <Route exact path="/url" component={Firestorage}/>
           <Route exact path="/login" component={Firelogin}/>
       </Switch>

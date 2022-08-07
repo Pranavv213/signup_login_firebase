@@ -1,43 +1,19 @@
-import React,{useState,useEffect} from 'react';
-import {database} from './firebase'
-import Pay from './Pay'
-import Link from 'react-router-dom'
-function Firebase({n}) {
-    const [name,setName]=useState('')
-    const [no,setNo]=useState('')
-    const [user,setUser]=useState(null)
-    const [d,setD]=useState('hello')
-    const [im,setIm]=useState('')
- 
-    const getTodos = async() => {
-        let q=[]
-        let data=await database.users.get();
-        data.forEach((obj)=>{
-            if(obj.data().email=='saitama')
-            {
-                console.log(obj.data())
-                q.push(obj.data().email)
-                setIm(obj.data().image)
-            }
-           
-        })
-        setD(q)
-          
-        }
-    
-    useEffect(async()=>{
-      getTodos()
-      console.log()
-    },[])
-  return <div>
-    
-     <img style={{width:"20em", height:"20em"}} src={`https://firebasestorage.googleapis.com/v0/b/reels-2def6.appspot.com/o/%5Bobject%20File%5D%2F%5Bobject%20File%5D?alt=media&token=31778697-0dad-4d95-95c3-a197939b715e`}>
-
-      
-     </img>
-     {/* <button>buy course</button> */}
-      <Pay/>
-  </div>;
+import React from 'react'
+import {useSelector, useDispatch} from "react-redux";
+function Buy
+() {
+  const myState=useSelector((state)=> state.changethenum)
+  return (
+    <div>
+      {myState=="got"?
+      <div> Welcome 
+        <br></br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/W8U_w2CIzDk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      :<div> Login First</div>
+      }
+    </div>
+  )
 }
 
-export default Firebase;
+export default Buy

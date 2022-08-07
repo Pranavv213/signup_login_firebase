@@ -2,11 +2,15 @@ import React,{useState,useEffect} from 'react';
 import {database} from './firebase'
 import GetData from './GetData'
 import Buy from './Buy'
+import {useSelector, useDispatch} from "react-redux";
+import {incNumber,decNumber} from "./actions/index"
+
 function Firelogin({n}) {
+    const myState=useSelector((state)=> state.changethenum)
+    const dispatch = useDispatch();
     const [username,setUsername]=useState('')
     const [no1,setNo1]=useState('')
-    const [user,setUser]=useState('')
-    const [data,setData]=useState('hello')
+
     const [info1,setInfo1]=useState('')
     const [info,setInfo]=useState('')
     let createUserInDB=async()=>{
@@ -23,6 +27,8 @@ function Firelogin({n}) {
                        {
                            console.log('successfully login')
                            setInfo1('1')
+                           console.log(array)
+                           dispatch(incNumber("got"))
 
                        }
                        else{
@@ -55,6 +61,7 @@ function Firelogin({n}) {
   return <div>
       {info1==''?<div>
         {n}
+        {myState}
       <div>username<input value={username} onChange={(e)=>{
           setUsername(e.target.value)
       }}></input>
@@ -69,7 +76,9 @@ function Firelogin({n}) {
       {/* <a href="/url">already have an account</a> */}
       {/* {data} */}
       {info}
-      </div>:<div><Buy/></div>}
+      </div>:<div>
+       
+        <Buy/></div>}
       
   </div>;
 }
